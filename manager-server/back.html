@@ -1,0 +1,93 @@
+<!--
+ * @Author: laibin.zheng
+ * @Date: 2022-04-27 14:51:08
+ * @LastEditTime: 2022-04-29 22:40:56
+ * @LastEditors: laibin.zheng
+ * @Description: 
+ * @FilePath: \manager-server\back.html
+ nager-server\back.html
+ * 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <a id='launchApp'>paynicorn://com.transsion.pay.paysdk.demo/distribute?txnId=32204290000001002</a> -->
+  <!-- document.addEventListener('visibilitychange', function logData() {
+  if (document.visibilityState === 'hidden') {
+  navigator.sendBeacon('http://127.0.0.1:4523/mock/893668/login', '用户行为-关闭页面');
+  }
+  }); -->
+
+  <p><label><input type="checkbox" id="checkbox"> Checked</label>
+  <p><button id="button">Click me</button>
+    <iframe id='launchApp' src="" frameborder="0"></iframe>
+    <script>
+      // throw new Error('this is error')
+      try {
+        const aDom = document.getElementById('launchApp')
+        aDom.src = 'paynicorn://com.transsion.pay.paysdk.demo/distribute?txnId=32204290000001002';
+        aDom.addEventListener('onerror ', (e) => {
+          console.log(e)
+        })
+        // const a = aDom.click()
+        // const b = location.replace(aDom.href)
+        // console.log(b)
+        // const a = window.open(aDom.href)
+        // const a = window.open(aDom.href, '_blank')
+        // const a = window.open('https://www.baidu.com', '_blank')
+        // throw new Error('this is error')
+        // console.log(a, '<----b----');
+
+      } catch (error) {
+        console.log(error);
+      } finally {
+        console.log('finally');
+      }
+
+      // window.location.href = 'https://www.baidu.com';
+      setTimeout(function () {
+        let hidden = window.document.hidden || window.document.mozHidden || window.document
+          .msHidden || window.document.webkitHidden
+        if (typeof hidden == "undefined" || hidden == false) {
+          console.log('没有跳转');
+          //应用宝下载地址 (emmm 找不到淘宝应用宝的地址，这里放的是 lucky coffee 地址)
+        } else {
+          console.log('跳转');
+        }
+      }, 2000);
+
+
+
+    // window.onbeforeunload = function name(params) {
+    //   navigator.sendBeacon('http://10.2.132.25:3000/user?log=用户行为- 关闭页面');
+    // };
+    // document.addEventListener('visibilitychange', function logData() {
+    //   if (document.visibilityState === 'hidden') {
+    //     // alert('用户行为-关闭页面')
+    //     console.log('用户行为-最小化或关闭页面');
+    //     navigator.sendBeacon('http://10.2.132.25:3000/user?log=用户行为- 最小化或关闭页面');
+    //   }
+    // });
+
+
+    // window.addEventListener('popstate', () => {
+    //   // logger('用户行为-物理键返回');
+    //   console.log('用户行为-物理键返回');
+    //   alert('用户行为-物理键返回')
+    //   navigator.sendBeacon('http://127.0.0.1:4523/mock/893668/login', '用户行为-物理键返回');
+    // })
+
+
+    </script>
+</body>
+
+</html>
